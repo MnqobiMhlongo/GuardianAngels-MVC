@@ -1,0 +1,139 @@
+﻿@model IEnumerable<GuardianAngels.Models.Student>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/newLayout1.cshtml";
+}
+
+<center>
+    <h1>All Students</h1>
+    <hr style="width:50%" />
+</center>
+<br />
+<br />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div style="padding-left:15px">
+            <div class="card mb-5" style="padding-left:30px">
+                <a href="@Url.Action("Details", new { id = item.StudentId })" class="d-flex align-items-center">
+                    <img src="data:image/png;base64,@(item.StudentImage)" alt="Student Image" class="img-fluid" style="width: 100px; height: 100px; object-fit: cover; margin-right: 20px;">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Name</h5>
+                        <hr style="width:70%" />
+                        <p class="card-text">
+                            <strong>Status:</strong> @item.Status<br />
+                            <strong>Parent Email:</strong> @item.ParentEmail<br />
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    }
+</div>
+
+<br />
+
+<br />
+<br />
+<br />
+<br />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.School.SchoolName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParentEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vId)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.School.SchoolName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentImage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParentEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.vId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.StudentId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.StudentId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.StudentId })
+            </td>
+        </tr>
+    }
+
+    </table>
+*@

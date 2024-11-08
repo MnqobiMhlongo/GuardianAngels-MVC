@@ -1,0 +1,35 @@
+﻿@model GuardianAngels.Models.Messages
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/newLayout1.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Messages</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Sent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.messageText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.messageText)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MessageId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Parents";
+    Layout = "~/Views/Shared/newLayout1.cshtml";
+}
+
+@model IEnumerable<GuardianAngels.Models.UserViewModel>
+
+<br/>
+<h2>DBParents</h2>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Phone Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td><img src="~/images/usericon.png" width="25" height="25" /></td>
+                <td>@user.Email</td>
+                <td>@user.NameSurname</td>
+                <td>@user.number</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+<br /><br />
+<br />
+<br />
+<br />

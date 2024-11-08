@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "UserMessages";
+    Layout = "~/Views/Shared/newLayout2.cshtml";
+}
+
+<br />
+<br />
+<br />
+<center>
+    <h2>Messages</h2>
+    <hr style="width:50%" />
+</center>
+
+
+
+<div class="mb-4">  
+    @if (ViewBag.SentMessages != null)
+    {
+        foreach (var message in ViewBag.SentMessages)
+        {
+            <div class="card mb-2">
+                <div class="card-body" style="background-color:ghostwhite">
+                    <p class="card-text">@message.messageText</p>
+                    <small class="text-muted">Sent: @message.Sent.ToString("g")</small>
+                </div>
+            </div>
+            <br />
+        }
+    }
+</div>
+
+@section scripts{
+    
+    
+    
+    
+    
+    
+}

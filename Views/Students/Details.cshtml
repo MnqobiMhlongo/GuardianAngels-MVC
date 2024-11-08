@@ -1,0 +1,194 @@
+﻿@using ZXing
+@using ZXing.QrCode
+@using ZXing.Common
+@using System.Drawing.Imaging
+
+@model GuardianAngels.Models.Student
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/newLayout1.cshtml";
+}
+
+<center>
+    <h2>Student Details</h2>
+    <hr style="width:50%" />
+
+    <div class="row">
+        <div class="col">
+
+            <div class=" card">
+                <div class="card-header">Student Image</div>
+                <div class="card-body">
+                    <img src="data:image/png;base64,@(Model.StudentImage)" width="250" height="250" alt="Student Image">
+                </div>
+            </div>
+            <br />
+            <div class="card">
+                <div class="card-header">Please Ensure Student Has QR CODE At All Times</div>
+                <div class="card-body">
+                    <img src="~/images/qr-code.gif" width="50" height="50" />
+                    @{
+                        var writer = new BarcodeWriter
+                        {
+                            Format = BarcodeFormat.QR_CODE,
+                            Options = new QrCodeEncodingOptions
+                            {
+                                Height = 300,
+                                Width = 300,
+                                Margin = 0
+                            }
+                        };
+
+                        var qrCode = writer.Write($"{Model.QR}");
+
+                        using (var memoryStream = new MemoryStream())
+                        {
+                            qrCode.Save(memoryStream, ImageFormat.Png);
+                            var qrCodeBase64 = Convert.ToBase64String(memoryStream.ToArray());
+
+                            @*<img src="data:image/png;base64,@qrCodeBase64" alt="QR code"><br />
+
+                            <br />
+                            <br />
+                            <p> use qrcode to enter event </p>*@
+                            <a href="data:image/png;base64,@qrCodeBase64" download="qr-code.png" class="btn btn-primary">Download QR Code</a>
+                        }
+                    }
+                </div>
+            </div>
+
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-header">Student Information</div>
+                <div class="card-body">
+                    <b>Name: </b> @Model.Name <br />
+                    <b>Surname: </b>@Model.Surname<br />
+                    <b>Age: </b>@Model.Age<br />
+                    <b>Parent Email: </b> @Model.ParentEmail<br />
+                    <b>Contact Number: </b> @Model.ContactNumber<br />
+                </div>
+            </div>
+            <br />
+            <div class="card">
+                <div class="card-header">School & Vehicle Information</div>
+                <div class="card-body">
+                    <b>School: </b> @Html.DisplayNameFor(model => model.School.SchoolName)<br />
+                    <b>Tranport/Bus: </b>@ViewBag.VName<br />
+                    <b>Color: </b>@ViewBag.Color <br />
+                    <b>Number Plate: </b>@ViewBag.VPlate<br />
+                </div>
+
+            </div>
+
+
+            <br />
+            <div class="card border-warning">
+                <div class="card-header">Status</div>
+                <div class="card-body">
+                    <h1>@Model.Status</h1>
+                </div>
+            </div>
+
+        </div>
+
+
+</center>
+
+@*
+    <div>
+        <h4>Student</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.School.SchoolName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.School.SchoolName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Surname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Surname)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Age)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Age)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StudentImage)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StudentImage)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ContactNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ContactNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ParentEmail)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ParentEmail)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.QR)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.QR)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.vId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.vId)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.StudentId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+*@
+
+
+
+

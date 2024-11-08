@@ -1,0 +1,70 @@
+﻿@model IEnumerable<GuardianAngels.Models.School>
+
+@{
+    ViewBag.Title = "DriverIndex";
+    Layout = "~/Views/Shared/newLayout1.cshtml";
+}
+
+<br />
+<center>
+    <h2>Select Your School</h2>
+</center>
+<br />
+@*
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SchoolName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactNumber)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SchoolName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactNumber)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.SchoolId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.SchoolId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.SchoolId })
+            </td>
+        </tr>
+    }
+
+    </table>
+*@
+
+
+<br />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div style="padding-left:15px">
+            <div class="card mb-5" style="padding-left:30px">
+                <a href="@Url.Action("AdminIndex", new { id = item.SchoolId })" class="d-flex align-items-center">
+                    <img src="~/images/school.gif" alt="Student Image" class="img-fluid" style="width: 100px; height: 100px; object-fit: cover; margin-right: 20px;">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.SchoolName</h5>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    }
+</div>

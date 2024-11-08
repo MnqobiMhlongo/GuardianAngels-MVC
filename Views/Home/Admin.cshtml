@@ -1,0 +1,281 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/newLayout.cshtml";
+}
+
+
+
+<!-- banner -->
+<section class="banner_main">
+    <div id="myCarousel" class="carousel slide banner" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="carousel-caption  banner_po">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="build_box">
+                                    <h1>Admin</h1>
+                                    <br/>
+                                    <p>Menu</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="carousel-caption banner_po">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="build_box">
+                                    <h1>Admin</h1>
+                                    <br />
+                                    <p>Menu</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="carousel-caption banner_po">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="build_box">
+                                    <h1>Admin</h1>
+                                    <br />
+                                    <p>Menu</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</section>
+</header>
+<!-- end banner -->
+<!-- three_box -->
+<div class="three_box">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div id="text_hover" class="const text_align_center">
+                    <i><a href="@Url.Action("selectschools","Students")"><img src="~/images/parent.gif" width="200" height="200" alt="#" /></a></i>
+                    <a href="@Url.Action("selectschools","Students")">  <span>View All Students</span></a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div id="text_hover" class="const text_align_center">
+                    <i><a href="@Url.Action("schools","Students")"><img src="~/images/qr-code.gif" width="200" height="200" alt="#" /></a></i>
+                    <a href="@Url.Action("schools","Students")">  <span>Update Student Location</span></a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div id="text_hover" class="const text_align_center">
+                    <i><a href="@Url.Action("GetAttendanceDates","Students")"><img src="~/images/to-do-list.gif" width="200" height="200" alt="#" /></a></i>
+                    <a href="@Url.Action("GetAttendanceDates","Students")">  <span>View Attendance List</span></a>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-3">
+                <div id="text_hover" class="const text_align_center">
+                    <i><a href="@Url.Action("Parents","Schools")"><img src="~/images/family.gif" width="200" height="200" alt="#" /></a></i>
+                    <a href="@Url.Action("Parents","Schools")">  <span> View All Parents </span></a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div id="text_hover" class="const text_align_center">
+                    <i><a href="@Url.Action("Index","Schools")"><img src="~/images/school.gif" width="200" height="200" alt="#" /></a></i>
+                    <a href="@Url.Action("Index","Schools")">  <span>View Schools</span></a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div id="text_hover" class="const text_align_center">
+                    <i><a href="@Url.Action("Index","Vehicles")"><img src="~/images/school-bus.gif" width="200" height="200" alt="#" /></a></i>
+                    <a href="@Url.Action("Index","Vehicles")">  <span>View All School Vehicles</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end three_box -->
+<!-- projects -->
+<div class="projects">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titlepage">
+                    <h2>Features </h2>
+                    <span>Discover the innovative features that make our system the best choice for student tracking and registration.</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="proj" class="carousel slide projects_ban" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#proj" data-slide-to="0" class="active"></li>
+                        <li data-target="#proj" data-slide-to="1"></li>
+                        <li data-target="#proj" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="container-fluid">
+                                <div class="carousel-caption relative3">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="project">
+                                                <div class="project_img">
+                                                    <figure><img src="~/images/pikaso_texttoimage_students- (1).jpeg" alt="Real-Time Tracking" /></figure>
+                                                </div>
+                                                <div id="pro_ho" class="project_text">
+                                                    <h3>Real-Time Tracking</h3>
+                                                    <p>Monitor student movements with our efficient QR code scanning system, ensuring safety and accountability.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="project">
+                                                <div class="project_img">
+                                                    <figure><img src="~/images/pikaso_texttoimage_students- (2).jpeg" alt="Parent Registration" /></figure>
+                                                </div>
+                                                <div id="pro_ho" class="project_text">
+                                                    <h3>Easy Parent Registration</h3>
+                                                    <p>Streamline the registration process for parents, making it quick and user-friendly.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="project">
+                                                <div class="project_img">
+                                                    <figure><img src="~/images/pikaso_texttoimage_students- (3).jpeg" alt="Secure System" /></figure>
+                                                </div>
+                                                <div id="pro_ho" class="project_text">
+                                                    <h3>Secure and Reliable</h3>
+                                                    <p>Our system prioritizes security, ensuring that student data is protected at all times.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="container-fluid">
+                                <div class="carousel-caption relative3">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="project">
+                                                <div class="project_img">
+                                                    <figure><img src="~/images/pikaso_texttoimage_students-in-class.jpeg" alt="User-Friendly Interface" /></figure>
+                                                </div>
+                                                <div id="pro_ho" class="project_text">
+                                                    <h3>User-Friendly Interface</h3>
+                                                    <p>Our intuitive design makes it easy for parents and school staff to navigate the system.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="project">
+                                                <div class="project_img">
+                                                    <figure><img src="~/images/pikaso_texttoimage_students-in-uniform.jpeg" alt="Comprehensive Reports" /></figure>
+                                                </div>
+                                                <div id="pro_ho" class="project_text">
+                                                    <h3>Comprehensive Reports</h3>
+                                                    <p>Generate detailed reports on student activities and attendance for better insights.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="project">
+                                                <div class="project_img">
+                                                    <figure><img src="~/images/pikaso_texttoimage_students-.jpeg" alt="24/7 Support" /></figure>
+                                                </div>
+                                                <div id="pro_ho" class="project_text">
+                                                    <h3>24/7 Customer Support</h3>
+                                                    <p>Our dedicated support team is always available to assist with any inquiries or issues.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="container-fluid">
+                                <div class="carousel-caption relative3">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="project">
+                                                <div class="project_img">
+                                                    <figure><img src="~/images/pikaso_texttoimage_students-with-backpacks.jpeg" alt="Mobile Compatibility" /></figure>
+                                                </div>
+                                                <div id="pro_ho" class="project_text">
+                                                    <h3>Mobile Compatibility</h3>
+                                                    <p>Access the system from any device, ensuring flexibility and convenience.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="project">
+                                                <div class="project_img">
+                                                    <figure><img src="~/images/pikaso_texttoimage_students- (1).jpeg" alt="Scalable Solutions" /></figure>
+                                                </div>
+                                                <div id="pro_ho" class="project_text">
+                                                    <h3>Scalable Solutions</h3>
+                                                    <p>Our system is designed to grow with your needs, accommodating more students and features as required.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="project">
+                                                <div class="project_img">
+                                                    <figure><img src="~/images/pikaso_texttoimage_students- (2).jpeg" alt="Community Engagement" /></figure>
+                                                </div>
+                                                <div id="pro_ho" class="project_text">
+                                                    <h3>Community Engagement</h3>
+                                                    <p>Engage with the community and keep parents informed about their children's school activities.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#proj" role="button" data-slide="prev">
+                            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#proj" role="button" data-slide="next">
+                            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end projects -->

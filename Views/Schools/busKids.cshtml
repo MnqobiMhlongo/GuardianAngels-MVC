@@ -1,0 +1,207 @@
+﻿@model IEnumerable<GuardianAngels.Models.Student>
+
+@{
+    ViewBag.Title = "SchoolUpdateStudents";
+    Layout = "~/Views/Shared/newLayout1.cshtml";
+}
+
+<style>
+    .result {
+        background-color: green;
+        color: #fff;
+        padding: 20px;
+    }
+
+    .row {
+        display: flex;
+    }
+
+    .fab {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 100px;
+        height: 100px;
+        background-color: #fff; /* Change color as needed */
+        color: #fff;
+        border-radius: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-size: 24px;
+    }
+
+        .fab:hover {
+            background-color: #fff; /* Slightly darker shade on hover */
+        }
+</style>
+
+<script>
+     function openPopup() {
+         var popup = window.open('@Url.Action("Create", "Messages")', 'PopupWindow', 'width=800,height=400');
+         popup.focus();
+     }
+</script>
+
+<center>
+    <h2>Students</h2>
+    <hr style="width:50%" />
+</center>
+
+
+<br />
+<br />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="card">
+
+                <center><img src="data:image/png;base64,@(item.StudentImage)" alt="Church Leader Image" class="card-img-top"></center>
+                <div class="card-body">
+                    <center>
+                        <h5 class="card-title">@item.Name</h5>
+                        <hr style="width:70%" />
+                        <p class="card-text">
+                            <strong>Status:</strong> @item.Status<br />
+                            <input type="hidden" value="@item.StudentId" name="@item.StudentId" id="@item.StudentId" />
+                        </p>
+                        <hr style="width:50%" />
+                        <button type="button" class="btn btn-primary btn-transfer" data-toggle="modal" data-target="#transferModal"
+                                data-student-id="@item.StudentId" data-student-status="@item.Status">
+                            Update
+                        </button>
+                    </center>
+                </div>
+
+            </div>
+        </div>
+    }
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="transferModal" tabindex="-1" role="dialog" aria-labelledby="transferModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="transferModalLabel">Scan To Update Status:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex flex-column">
+
+                    <div class="row">
+                        <div class="col">
+                            <div style="width:300px;" id="reader"></div>
+                        </div>
+                        <div class="col" style="padding:30px;">
+                            <h4>SCAN RESULT</h4>
+                            <br />
+                            <bt />
+                            <div id="result">Result Here</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Toastr CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+<!-- Toastr JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="~/Scripts/qrCodeScan.js"></script>
+<script type="text/javascript">
+
+    function onScanSuccess(qrCodeMessage) {
+        document.getElementById('result').innerHTML = '<span class="result">' + qrCodeMessage + '</span>';
+
+        // Find the button that opened the modal
+        var transferButton = document.querySelector('button[data-target="#transferModal"]');
+
+        // Get the data-student-id attribute from the button
+        var studentId = transferButton.getAttribute('data-student-id');
+        var status = transferButton.getAttribute('data-student-status')
+
+
+        // Log the student ID to the console
+        console.log("Scanned QR code message: " + qrCodeMessage);
+        console.log("Student ID: " + studentId);
+
+
+        handleQrCode(qrCodeMessage, studentId, status);
+
+
+    }
+
+    //kendricklamar-pride
+    function updateStudentStatus(studentId, newStatus, successMessage) {
+    $.ajax({
+        url: '@Url.Action("UpdateStudentStatus", "Students")', // Controller action to update the status
+        type: 'POST',
+        data: {
+            studentId: studentId,
+            status: newStatus
+        },
+        success: function (response) {
+            // Handle success response
+            alert(successMessage);
+            //toastr.success(successMessage);
+            window.location.reload();
+        },
+        error: function (error) {
+            // Handle error response
+            alert('Error updating student status');
+        }
+    });
+}
+
+function handleQrCode(qrCodeMessage, studentId, currentStatus) {
+    if (qrCodeMessage != studentId) {
+        alert('Incorrect QR CODE');
+        window.location.reload();
+        return;
+    }
+
+    switch (currentStatus) {
+        case "Home":
+            updateStudentStatus(studentId, "In-Transit(To School)", "Student status updated to 'In Transit (To School)'");
+            break;
+        case "In-Transit(To School)":
+            updateStudentStatus(studentId, "Arrived At School", "Student status updated to 'At School'");
+            break;
+        case "Arrived At School":
+            updateStudentStatus(studentId, "In-Transit(From School to Home)", "Student status updated to 'In Transit (From School to Home)'");
+            break;
+        case "In-Transit(From School to Home)":
+            updateStudentStatus(studentId, "Home", "Student status updated to 'Home'");
+            break;
+        default:
+            alert('Unrecognized status');
+            break;
+    }
+}
+
+
+            function onScanError(errorMessage) {
+            //handle scan error
+            }
+        var html5QrcodeScanner = new Html5QrcodeScanner(
+            "reader", { fps: 10, qrbox: 250 });
+            html5QrcodeScanner.render(onScanSuccess, onScanError);
+</script>

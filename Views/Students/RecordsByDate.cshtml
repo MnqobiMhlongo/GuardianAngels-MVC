@@ -1,0 +1,65 @@
+﻿@model IEnumerable<GuardianAngels.Models.Schoolregister>
+@{
+    ViewBag.Title = "RecordsByDate";
+    Layout = "~/Views/Shared/newLayout1.cshtml";
+}
+
+
+<center>
+    <h2>Attendance for @ViewBag.SelectedDate</h2>
+    <hr style="width:50%" />
+    <br/>
+</center>
+@if (Model.Any())
+{
+    @* <table class="table">
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Student Name</th>
+                    <th>Status</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var record in Model)
+                {
+                    <tr>
+                        <td>@record.studentid</td>
+                        <td>@record.studentName</td>
+                        <td>@record.Status</td>
+                        <td>
+                            <img src="@record.studentImage" alt="Student Image" width="50" height="50" />
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>*@
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div style="padding-left:15px">
+                <div class="card mb-5" style="padding-left:30px">
+                    <a href="@Url.Action("Details", new { id = item.studentid})" class="d-flex align-items-center">
+                        <img src="data:image/png;base64,@(item.studentImage)" alt="Student Image" class="img-fluid" style="width: 100px; height: 100px; object-fit: cover; margin-right: 20px;">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.studentName</h5>
+                            <hr style="width:70%" />
+                            <p class="card-text">
+                                <strong>Attended</strong><br />                               
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        }
+    </div>
+}
+else
+{
+    <p>No attendance records found for this date.</p>
+}
+
+
